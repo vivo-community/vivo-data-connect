@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-create-topic.sh
-# Description    : 
+# Description    : Kafka topic creation script
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

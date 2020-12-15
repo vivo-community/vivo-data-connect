@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-list-topic.sh
-# Description    : 
+# Description    : List all topics
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

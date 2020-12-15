@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-delete-topic.sh
-# Description    : 
+# Description    : Kafka topic delition script
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

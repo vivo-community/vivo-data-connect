@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-describe-topic.sh
-# Description    : 
+# Description    : Script to describe a Kafka topic
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

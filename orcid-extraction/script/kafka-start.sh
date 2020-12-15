@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-start
-# Description    : 
+# Description    : Start Kafka
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

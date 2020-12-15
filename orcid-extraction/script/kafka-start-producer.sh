@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-start-producer.sh
-# Description    : 
+# Description    : Send messages in the Kafka channel
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

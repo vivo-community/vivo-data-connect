@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-start-consumer.sh
-# Description    : 
+# Description    : Consume messages from the topic
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca
@@ -24,7 +24,5 @@ kafka-console-consumer.sh \
     --bootstrap-server $KAFKA_HOST:9092 \
     --partition 0 \
     --offset $offset
-    
-#    --from-beginning \
 
     

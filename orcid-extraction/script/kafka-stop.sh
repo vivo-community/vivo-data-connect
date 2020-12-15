@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ###################################################################
-# Script Name    : 
-# Description    : 
+# Script Name    : kafka-stop.sh
+# Description    : Stop Kafka
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

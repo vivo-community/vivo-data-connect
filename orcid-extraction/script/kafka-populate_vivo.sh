@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-populate_vivo
-# Description    : 
+# Description    : Consuming Kafka messages and transmitting them VIVO
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca

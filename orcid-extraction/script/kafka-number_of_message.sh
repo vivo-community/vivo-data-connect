@@ -2,7 +2,7 @@
 
 ###################################################################
 # Script Name    : kafka-number_of_message
-# Description    : 
+# Description    : List the number of messages in a topic
 # Args           : 
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca
