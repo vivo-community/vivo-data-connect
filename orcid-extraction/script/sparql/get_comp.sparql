@@ -1,0 +1,44 @@
+###################################################################
+# Script Name    : get_comp.sparql
+# Description    : Extract  and map competencies 
+# Args           : 
+# Author         : Michel Héon
+# Email          : heon.michel@uqam.ca
+###################################################################
+
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix orcid: <http://uqam.ca/vivo-dataconnect/orcid#>
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix sp: <http://spinrdf.org/sp#> 
+prefix sparql_request: <http://uqam.ca/vivo-dataconnect/sparql_request#>
+prefix spin: <http://spinrdf.org/spin#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+prefix data: <http://localhost:8080/vivo_uqam/individual/>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix core: <http://vivoweb.org/ontology/core#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix skos2: <http://www.w3.org/2008/05/skos#> 
+ 
+
+CONSTRUCT {
+    ?ID_IRI core:hasResearchArea ?comp_iri .
+    ?ID_IRI a owl:NamedIndividual .
+    ?comp_iri a skos:Concept .
+    ?comp_iri rdfs:label ?comp .
+    ?comp_iri rdfs:label ?comp_en .
+    ?comp_iri core:researchAreaOf ?ID_IRI .
+}
+WHERE {
+    ?s orcid:orcid-identifier/orcid:path ?ID .
+    BIND (IRI(CONCAT("http://localhost:8080/vivo/individual/", "ID-", ?ID)) AS ?ID_IRI) .
+    ?ss orcid:keyword ?k .
+    ?k orcid:content ?oo .
+    BIND (STRLANG(?oo, "fr-CA") AS ?comp) .
+    BIND (STRLANG(?oo, "en-US") AS ?comp_en) .
+    BIND (IRI(CONCAT("http://localhost:8080/vivo/individual/", ENCODE_FOR_URI(CONCAT("COMP_", str(?oo))))) AS ?comp_iri) .
+}

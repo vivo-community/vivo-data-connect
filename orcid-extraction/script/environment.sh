@@ -21,7 +21,7 @@ DEMO_HOME=$GIT_VIVO/vivo-data-connect/orcid-extraction/script
 VIVO_HOME=http://localhost:8080/vivo
 JENA_HOME=/opt/jena
 ORCID_VOC_IRI=http://uqam.ca/vivo-dataconnect/orcid
-ONTO_UQAM=$DEMO_HOME/onto_uqam.n3
+ONTO_ALL_RECORDS=$DEMO_HOME/onto_uqam.n3
 
 # KAFKA Variables
 KAFKA_HOST=localhost
@@ -32,6 +32,7 @@ TOPIC=vivo-dataconnect
 source ~/.config/orcid_id 
 GIT_VIVO=~/00-PROJECT-UQAM-VIVO/00-GIT
 DEMO_HOME=/home/heon/git/vivo-data-connect/orcid-extraction
+ONTO_ALL_RECORDS=$DEMO_HOME/onto_uqam.n3
 #####
 
 PATH=$PATH:$JENA_HOME/bin:$KAFKA_HOME/bin

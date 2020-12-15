@@ -1,0 +1,1 @@
+update=LOAD <file://home/heon/00-PROJECT-VIVO-DataConnect/00-GIT/VIVO-DataConnect/2020-12-04-Demo/onto_uqam.n3> into graph <http://localhost:8080/vivo/graph/vivo_demo>

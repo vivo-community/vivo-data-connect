@@ -1,0 +1,55 @@
+###################################################################
+# Script Name    : get_name.sparql
+# Description    : Extracting name an Title of record in fr_CA 
+# Args           : 
+# Author         : Michel Héon
+# Email          : heon.michel@uqam.ca
+###################################################################
+
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix orcid: <http://uqam.ca/vivo-dataconnect/orcid#>
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix sp: <http://spinrdf.org/sp#> 
+prefix sparql_request: <http://uqam.ca/vivo-dataconnect/sparql_request#>
+prefix spin: <http://spinrdf.org/spin#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+prefix data: <http://localhost:8080/vivo_uqam/individual/>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix core: <http://vivoweb.org/ontology/core#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix skos2: <http://www.w3.org/2008/05/skos#> 
+
+CONSTRUCT {
+    ?ID_IRI a core:FacultyMember .
+    ?ID_IRI a owl:NamedIndividual .
+    ?ID_IRI rdfs:label ?full_name .
+    ?ID_IRI obo:ARG_2000028 ?VCARD_ID_IRI .
+    ?VCARD_ID_IRI obo:ARG_2000029 ?ID_IRI .
+    ?VCARD_ID_IRI a vcard:Individual .
+    ?VCARD_ID_IRI vcard:hasName _:b0 .
+    ?VCARD_ID_IRI vcard:hasTitle _:b1 .
+    _:b1 a vcard:Title .
+    _:b1 vcard:title ?title .
+    _:b0 a vcard:Name .
+    _:b0 vcard:familyName ?fnCA .
+    _:b0 vcard:givenName ?gnCA .
+}
+WHERE {
+    ?s orcid:person ?o .
+    ?s orcid:orcid-identifier/orcid:path ?ID .
+    ?o orcid:name ?oo .
+    ?oo orcid:family-name/orcid:value ?fn .
+    ?oo orcid:given-names/orcid:value ?gn .
+    BIND (IRI(CONCAT("http://localhost:8080/vivo/individual/", "ID-", ?ID)) AS ?ID_IRI) .
+    BIND (IRI(CONCAT("http://localhost:8080/vivo/individual/", "VCARD-", ?ID)) AS ?VCARD_ID_IRI) .
+    BIND (STRLANG(CONCAT(?gn, " ", ?fn), "en-US") AS ?full_name_en) .
+    BIND (STRLANG(CONCAT(?gn, " ", ?fn), "fr-CA") AS ?full_name) .
+    BIND (STRLANG("Professeur", "fr-CA") AS ?title) .   # For now, everybody is a professor
+    BIND (STRLANG(?fn, "fr-CA") AS ?fnCA) .
+    BIND (STRLANG(?gn, "fr-CA") AS ?gnCA) .
+}

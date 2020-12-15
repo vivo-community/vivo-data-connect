@@ -1,0 +1,54 @@
+###################################################################
+# Script Name    : get_org.sparql
+# Description    : Extract and map organization 
+# Args           : 
+# Author         : Michel Héon
+# Email          : heon.michel@uqam.ca
+###################################################################
+
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix orcid: <http://uqam.ca/vivo-dataconnect/orcid#>
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix sp: <http://spinrdf.org/sp#> 
+prefix sparql_request: <http://uqam.ca/vivo-dataconnect/sparql_request#>
+prefix spin: <http://spinrdf.org/spin#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix vcard: <http://www.w3.org/2006/vcard/ns#>
+prefix data: <http://localhost:8080/vivo_uqam/individual/>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix obo: <http://purl.obolibrary.org/obo/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix core: <http://vivoweb.org/ontology/core#> 
+
+CONSTRUCT {
+    ?IR_IRI obo:ARG_2000028 ?VCARD_ID_IRI .
+    ?VCARD_ID_IRI vcard:hasTitle _:b0 .
+    _:b0 a vcard:Title .
+    _:b0 vcard:title ?role_lang .
+    ?ID_IRI core:relatedBy ?ORG_IRI .
+    ?ORG_IRI rdfs:label ?role_lang .
+    ?ORG_IRI rdfs:label ?role_lang_en .
+    ?ID_IRI a owl:NamedIndividual .
+    ?ORG_IRI a core:FacultyPosition .
+    ?ORG_IRI vcard:organizationalUnitName ?org_name .
+    ?ORG_IRI vcard:title ?role_lang .
+    ?ORG_IRI vcard:title ?role_lang_en .
+    ?ORG_IRI core:relates ?ID_IRI .
+}
+WHERE {
+    ?s orcid:orcid-identifier/orcid:path ?ID .
+    BIND (IRI(CONCAT("http://localhost:8080/vivo/individual/", "ID-", ?ID)) AS ?ID_IRI) .
+    ?x orcid:employments/orcid:affiliation-group ?ag .
+    ?ag orcid:summaries/orcid:employment-summary ?es .
+    ?es orcid:organization ?org .
+    ?org orcid:disambiguated-organization/orcid:disambiguated-organization-identifier ?org_id .
+    ?org orcid:name ?name .
+    ?es orcid:role-title ?role .
+    BIND (IRI(CONCAT("http://localhost:8080/vivo_uqam/individual/", ?org_id)) AS ?ORG_IRI) .
+    BIND (IRI(CONCAT("http://localhost:8080/vivo/individual/", "VCARD-", ?ID)) AS ?VCARD_ID_IRI) .
+    BIND (STRLANG(?role, "fr-CA") AS ?role_lang) .
+    BIND (STRLANG(?role, "en-US") AS ?role_lang_en) .
+    BIND (STRLANG(?name, "fr-CA") AS ?org_name) .
+}

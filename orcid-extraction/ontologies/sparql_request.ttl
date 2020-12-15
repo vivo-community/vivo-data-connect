@@ -1,0 +1,958 @@
+# baseURI: http://uqam.ca/vivo-dataconnect/sparql_request
+# imports: http://spinrdf.org/spin
+# imports: http://uqam.ca/vivo-dataconnect/orcid
+# imports: http://vivoweb.org/ontology/core
+# prefix: sparql_request
+
+@prefix orcid: <http://uqam.ca/vivo-dataconnect/orcid#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparql_request: <http://uqam.ca/vivo-dataconnect/sparql_request#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uqam.ca/vivo-dataconnect/sparql_request>
+  a owl:Ontology ;
+  owl:imports <http://spinrdf.org/spin> ;
+  owl:imports <http://uqam.ca/vivo-dataconnect/orcid> ;
+  owl:imports <http://vivoweb.org/ontology/core> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+sparql_request:construct_properties
+  a sparql_request:query ;
+  spin:query [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object owl:ObjectProperty ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "p" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "object" ;
+              ] ;
+            sp:predicate [
+                sp:varName "p" ;
+              ] ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            a sp:Filter ;
+            sp:expression [
+                a sp:regex ;
+                sp:arg1 [
+                    a sp:str ;
+                    sp:arg1 [
+                        sp:varName "p" ;
+                      ] ;
+                  ] ;
+                sp:arg2 "uqam" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "construct properties" ;
+.
+sparql_request:getName
+  a sparql_request:query ;
+  spin:query [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://vivoweb.org/ontology/core#FacultyMember> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object owl:NamedIndividual ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "full_name" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+            sp:predicate <http://purl.obolibrary.org/obo/ARG_2000028> ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ID_IRI" ;
+              ] ;
+            sp:predicate <http://purl.obolibrary.org/obo/ARG_2000029> ;
+            sp:subject [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object <http://www.w3.org/2006/vcard/ns#Individual> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object _:b8461 ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#hasName> ;
+            sp:subject [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object _:b76749 ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#hasTitle> ;
+            sp:subject [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object <http://www.w3.org/2006/vcard/ns#Title> ;
+            sp:predicate rdf:type ;
+            sp:subject _:b76749 ;
+          ]
+          [
+            sp:object [
+                sp:varName "title" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#title> ;
+            sp:subject _:b76749 ;
+          ]
+          [
+            sp:object <http://www.w3.org/2006/vcard/ns#Name> ;
+            sp:predicate rdf:type ;
+            sp:subject _:b8461 ;
+          ]
+          [
+            sp:object [
+                sp:varName "fnCA" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#familyName> ;
+            sp:subject _:b8461 ;
+          ]
+          [
+            sp:object [
+                sp:varName "gnCA" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#givenName> ;
+            sp:subject _:b8461 ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "o" ;
+              ] ;
+            sp:predicate orcid:person ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "ID" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:orcid-identifier ;
+                sp:path2 orcid:path ;
+              ] ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "oo" ;
+              ] ;
+            sp:predicate orcid:name ;
+            sp:subject [
+                sp:varName "o" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "fn" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:family-name ;
+                sp:path2 orcid:value ;
+              ] ;
+            sp:subject [
+                sp:varName "oo" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "gn" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:given-names ;
+                sp:path2 orcid:value ;
+              ] ;
+            sp:subject [
+                sp:varName "oo" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://localhost:8080/vivo_i18n/individual/" ;
+                    sp:arg2 "ID-" ;
+                    sp:arg3 [
+                        sp:varName "ID" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://localhost:8080/vivo_i18n/individual/" ;
+                    sp:arg2 "VCARD-" ;
+                    sp:arg3 [
+                        sp:varName "ID" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 [
+                        sp:varName "gn" ;
+                      ] ;
+                    sp:arg2 " " ;
+                    sp:arg3 [
+                        sp:varName "fn" ;
+                      ] ;
+                  ] ;
+                sp:arg2 "en-US" ;
+              ] ;
+            sp:variable [
+                sp:varName "full_name_en" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 [
+                        sp:varName "gn" ;
+                      ] ;
+                    sp:arg2 " " ;
+                    sp:arg3 [
+                        sp:varName "fn" ;
+                      ] ;
+                  ] ;
+                sp:arg2 "fr-CA" ;
+              ] ;
+            sp:variable [
+                sp:varName "full_name" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 "Professeur" ;
+                sp:arg2 "fr-CA" ;
+              ] ;
+            sp:variable [
+                sp:varName "title" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    sp:varName "fn" ;
+                  ] ;
+                sp:arg2 "fr-CA" ;
+              ] ;
+            sp:variable [
+                sp:varName "fnCA" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    sp:varName "gn" ;
+                  ] ;
+                sp:arg2 "fr-CA" ;
+              ] ;
+            sp:variable [
+                sp:varName "gnCA" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:query [
+      a sp:Select ;
+      sp:distinct true ;
+      sp:resultVariables (
+          [
+            sp:varName "fn" ;
+          ]
+          [
+            sp:varName "gn" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "o" ;
+              ] ;
+            sp:predicate orcid:person ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "oo" ;
+              ] ;
+            sp:predicate orcid:name ;
+            sp:subject [
+                sp:varName "o" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "fn" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:family-name ;
+                sp:path2 orcid:value ;
+              ] ;
+            sp:subject [
+                sp:varName "oo" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "gn" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:given-names ;
+                sp:path2 orcid:value ;
+              ] ;
+            sp:subject [
+                sp:varName "oo" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "get name" ;
+.
+sparql_request:map_competencies
+  a sparql_request:query ;
+  spin:query [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "comp_iri" ;
+              ] ;
+            sp:predicate <http://vivoweb.org/ontology/core#hasResearchArea> ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object owl:NamedIndividual ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object <http://www.w3.org/2004/02/skos/core#Concept> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "comp_iri" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "comp" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "comp_iri" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "comp_en" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "comp_iri" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ID_IRI" ;
+              ] ;
+            sp:predicate <http://vivoweb.org/ontology/core#researchAreaOf> ;
+            sp:subject [
+                sp:varName "comp_iri" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "ID" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:orcid-identifier ;
+                sp:path2 orcid:path ;
+              ] ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://localhost:8080/vivo_i18n/individual/" ;
+                    sp:arg2 "ID-" ;
+                    sp:arg3 [
+                        sp:varName "ID" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "k" ;
+              ] ;
+            sp:predicate orcid:keyword ;
+            sp:subject [
+                sp:varName "ss" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "oo" ;
+              ] ;
+            sp:predicate orcid:content ;
+            sp:subject [
+                sp:varName "k" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    sp:varName "oo" ;
+                  ] ;
+                sp:arg2 "fr-CA" ;
+              ] ;
+            sp:variable [
+                sp:varName "comp" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    sp:varName "oo" ;
+                  ] ;
+                sp:arg2 "en-US" ;
+              ] ;
+            sp:variable [
+                sp:varName "comp_en" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://localhost:8080/vivo_i18n/individual/" ;
+                    sp:arg2 [
+                        a sp:encode_for_uri ;
+                        sp:arg1 [
+                            a sp:concat ;
+                            sp:arg1 "COMP_" ;
+                            sp:arg2 [
+                                a sp:str ;
+                                sp:arg1 [
+                                    sp:varName "oo" ;
+                                  ] ;
+                              ] ;
+                          ] ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "comp_iri" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:query [
+      a sp:Select ;
+      sp:distinct true ;
+      sp:resultVariables (
+          [
+            sp:varName "oo" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "k" ;
+              ] ;
+            sp:predicate orcid:keyword ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "oo" ;
+              ] ;
+            sp:predicate orcid:content ;
+            sp:subject [
+                sp:varName "k" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "map competencies" ;
+.
+sparql_request:organizationRole
+  a sparql_request:query ;
+  spin:query [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+            sp:predicate <http://purl.obolibrary.org/obo/ARG_2000028> ;
+            sp:subject [
+                sp:varName "IR_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object _:b17606 ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#hasTitle> ;
+            sp:subject [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object <http://www.w3.org/2006/vcard/ns#Title> ;
+            sp:predicate rdf:type ;
+            sp:subject _:b17606 ;
+          ]
+          [
+            sp:object [
+                sp:varName "role_lang" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#title> ;
+            sp:subject _:b17606 ;
+          ]
+          [
+            sp:object [
+                sp:varName "ORG_IRI" ;
+              ] ;
+            sp:predicate <http://vivoweb.org/ontology/core#relatedBy> ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "role_lang" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "role_lang_en" ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object owl:NamedIndividual ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object <http://vivoweb.org/ontology/core#FacultyPosition> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "org_name" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#organizationalUnitName> ;
+            sp:subject [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "role_lang" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#title> ;
+            sp:subject [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "role_lang_en" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/vcard/ns#title> ;
+            sp:subject [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ID_IRI" ;
+              ] ;
+            sp:predicate <http://vivoweb.org/ontology/core#relates> ;
+            sp:subject [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "ID" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:orcid-identifier ;
+                sp:path2 orcid:path ;
+              ] ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://localhost:8080/vivo_i18n/individual/" ;
+                    sp:arg2 "ID-" ;
+                    sp:arg3 [
+                        sp:varName "ID" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "ID_IRI" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "ag" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:employments ;
+                sp:path2 orcid:affiliation-group ;
+              ] ;
+            sp:subject [
+                sp:varName "x" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "es" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:summaries ;
+                sp:path2 orcid:employment-summary ;
+              ] ;
+            sp:subject [
+                sp:varName "ag" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "org" ;
+              ] ;
+            sp:predicate orcid:organization ;
+            sp:subject [
+                sp:varName "es" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "org_id" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:disambiguated-organization ;
+                sp:path2 orcid:disambiguated-organization-identifier ;
+              ] ;
+            sp:subject [
+                sp:varName "org" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "name" ;
+              ] ;
+            sp:predicate orcid:name ;
+            sp:subject [
+                sp:varName "org" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "role" ;
+              ] ;
+            sp:predicate orcid:role-title ;
+            sp:subject [
+                sp:varName "es" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://localhost:8080/vivo_uqam/individual/" ;
+                    sp:arg2 [
+                        sp:varName "org_id" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "ORG_IRI" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:iri ;
+                sp:arg1 [
+                    a sp:concat ;
+                    sp:arg1 "http://localhost:8080/vivo_i18n/individual/" ;
+                    sp:arg2 "VCARD-" ;
+                    sp:arg3 [
+                        sp:varName "ID" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "VCARD_ID_IRI" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    sp:varName "role" ;
+                  ] ;
+                sp:arg2 "fr-CA" ;
+              ] ;
+            sp:variable [
+                sp:varName "role_lang" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    sp:varName "role" ;
+                  ] ;
+                sp:arg2 "en-US" ;
+              ] ;
+            sp:variable [
+                sp:varName "role_lang_en" ;
+              ] ;
+          ]
+          [
+            a sp:Bind ;
+            sp:expression [
+                a sp:strlang ;
+                sp:arg1 [
+                    sp:varName "name" ;
+                  ] ;
+                sp:arg2 "fr-CA" ;
+              ] ;
+            sp:variable [
+                sp:varName "org_name" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:query [
+      a sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "dept" ;
+          ]
+          [
+            sp:varName "org" ;
+          ]
+          [
+            sp:varName "role" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "o" ;
+              ] ;
+            sp:predicate orcid:educations ;
+            sp:subject [
+                sp:varName "s" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "oo" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 [
+                    a sp:SeqPath ;
+                    sp:path1 orcid:affiliation-group ;
+                    sp:path2 orcid:summaries ;
+                  ] ;
+                sp:path2 orcid:education-summary ;
+              ] ;
+            sp:subject [
+                sp:varName "o" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "dept" ;
+              ] ;
+            sp:predicate orcid:department-name ;
+            sp:subject [
+                sp:varName "oo" ;
+              ] ;
+          ]
+          [
+            a sp:TriplePath ;
+            sp:object [
+                sp:varName "org" ;
+              ] ;
+            sp:path [
+                a sp:SeqPath ;
+                sp:path1 orcid:organization ;
+                sp:path2 orcid:name ;
+              ] ;
+            sp:subject [
+                sp:varName "oo" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "role" ;
+              ] ;
+            sp:predicate orcid:role-title ;
+            sp:subject [
+                sp:varName "oo" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "organization role" ;
+.
+sparql_request:query
+  a owl:Class ;
+  rdfs:label "query" ;
+  rdfs:subClassOf owl:Thing ;
+.

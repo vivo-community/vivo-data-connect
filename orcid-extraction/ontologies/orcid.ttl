@@ -1,0 +1,352 @@
+# baseURI: http://uqam.ca/vivo-dataconnect/orcid
+# prefix: orcid
+
+@prefix : <http://uqam.ca/vivo-dataconnect/orcid#> .
+@prefix orcid: <http://uqam.ca/vivo-dataconnect/orcid#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uqam.ca/vivo-dataconnect/orcid>
+  a owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+orcid:OrcidMember
+  a owl:Class ;
+  rdfs:label "Orcid member" ;
+  rdfs:subClassOf owl:Thing ;
+.
+orcid:activities-summary
+  a owl:ObjectProperty ;
+.
+orcid:address
+  a owl:ObjectProperty ;
+.
+orcid:addresses
+  a owl:ObjectProperty ;
+.
+orcid:affiliation-group
+  a owl:ObjectProperty ;
+.
+orcid:assertion-origin-name
+  a owl:ObjectProperty ;
+.
+orcid:assertion-origin-orcid
+  a owl:ObjectProperty ;
+.
+orcid:biography
+  a owl:ObjectProperty ;
+.
+orcid:city
+  a owl:ObjectProperty ;
+.
+orcid:claimed
+  a owl:ObjectProperty ;
+.
+orcid:completion-date
+  a owl:ObjectProperty ;
+.
+orcid:content
+  a owl:ObjectProperty ;
+.
+orcid:convening-organization
+  a owl:ObjectProperty ;
+.
+orcid:country
+  a owl:ObjectProperty ;
+.
+orcid:created-date
+  a owl:ObjectProperty ;
+.
+orcid:creation-method
+  a owl:ObjectProperty ;
+.
+orcid:credit-name
+  a owl:ObjectProperty ;
+.
+orcid:day
+  a owl:ObjectProperty ;
+.
+orcid:department-name
+  a owl:ObjectProperty ;
+.
+orcid:disambiguated-organization
+  a owl:ObjectProperty ;
+.
+orcid:disambiguated-organization-identifier
+  a owl:ObjectProperty ;
+.
+orcid:disambiguation-source
+  a owl:ObjectProperty ;
+.
+orcid:display-index
+  a owl:ObjectProperty ;
+.
+orcid:distinction-summary
+  a owl:ObjectProperty ;
+.
+orcid:distinctions
+  a owl:ObjectProperty ;
+.
+orcid:education-summary
+  a owl:ObjectProperty ;
+.
+orcid:educations
+  a owl:ObjectProperty ;
+.
+orcid:email
+  a owl:ObjectProperty ;
+.
+orcid:emails
+  a owl:ObjectProperty ;
+.
+orcid:employment-summary
+  a owl:ObjectProperty ;
+.
+orcid:employments
+  a owl:ObjectProperty ;
+.
+orcid:end-date
+  a owl:ObjectProperty ;
+.
+orcid:error-code
+  a owl:ObjectProperty ;
+.
+orcid:error-message
+  a owl:ObjectProperty ;
+.
+orcid:external-id
+  a owl:ObjectProperty ;
+.
+orcid:external-id-normalized
+  a owl:ObjectProperty ;
+.
+orcid:external-id-normalized-error
+  a owl:ObjectProperty ;
+.
+orcid:external-id-relationship
+  a owl:ObjectProperty ;
+.
+orcid:external-id-type
+  a owl:ObjectProperty ;
+.
+orcid:external-id-url
+  a owl:ObjectProperty ;
+.
+orcid:external-id-value
+  a owl:ObjectProperty ;
+.
+orcid:external-identifier
+  a owl:ObjectProperty ;
+.
+orcid:external-identifiers
+  a owl:ObjectProperty ;
+.
+orcid:external-ids
+  a owl:ObjectProperty ;
+.
+orcid:family-name
+  a owl:ObjectProperty ;
+.
+orcid:funding-summary
+  a owl:ObjectProperty ;
+.
+orcid:fundings
+  a owl:ObjectProperty ;
+.
+orcid:given-names
+  a owl:ObjectProperty ;
+.
+orcid:group
+  a owl:ObjectProperty ;
+.
+orcid:history
+  a owl:ObjectProperty ;
+.
+orcid:host
+  a owl:ObjectProperty ;
+.
+orcid:invited-position-summary
+  a owl:ObjectProperty ;
+.
+orcid:invited-positions
+  a owl:ObjectProperty ;
+.
+orcid:journal-title
+  a owl:ObjectProperty ;
+.
+orcid:keyword
+  a owl:ObjectProperty ;
+.
+orcid:keywords
+  a owl:ObjectProperty ;
+.
+orcid:language-code
+  a owl:ObjectProperty ;
+.
+orcid:last-modified-date
+  a owl:ObjectProperty ;
+.
+orcid:locale
+  a owl:ObjectProperty ;
+.
+orcid:membership-summary
+  a owl:ObjectProperty ;
+.
+orcid:memberships
+  a owl:ObjectProperty ;
+.
+orcid:month
+  a owl:ObjectProperty ;
+.
+orcid:name
+  a owl:ObjectProperty ;
+.
+orcid:orcid-identifier
+  a owl:ObjectProperty ;
+.
+orcid:organization
+  a owl:ObjectProperty ;
+.
+orcid:other-name
+  a owl:ObjectProperty ;
+.
+orcid:other-names
+  a owl:ObjectProperty ;
+.
+orcid:path
+  a owl:ObjectProperty ;
+.
+orcid:peer-review-group
+  a owl:ObjectProperty ;
+.
+orcid:peer-review-summary
+  a owl:ObjectProperty ;
+.
+orcid:peer-reviews
+  a owl:ObjectProperty ;
+.
+orcid:person
+  a owl:ObjectProperty ;
+.
+orcid:preferences
+  a owl:ObjectProperty ;
+.
+orcid:primary
+  a owl:ObjectProperty ;
+.
+orcid:publication-date
+  a owl:ObjectProperty ;
+.
+orcid:put-code
+  a owl:ObjectProperty ;
+.
+orcid:qualification-summary
+  a owl:ObjectProperty ;
+.
+orcid:qualifications
+  a owl:ObjectProperty ;
+.
+orcid:region
+  a owl:ObjectProperty ;
+.
+orcid:research-resources
+  a owl:ObjectProperty ;
+.
+orcid:researcher-url
+  a owl:ObjectProperty ;
+.
+orcid:researcher-urls
+  a owl:ObjectProperty ;
+.
+orcid:review-group-id
+  a owl:ObjectProperty ;
+.
+orcid:review-type
+  a owl:ObjectProperty ;
+.
+orcid:review-url
+  a owl:ObjectProperty ;
+.
+orcid:reviewer-role
+  a owl:ObjectProperty ;
+.
+orcid:role-title
+  a owl:ObjectProperty ;
+.
+orcid:service-summary
+  a owl:ObjectProperty ;
+.
+orcid:services
+  a owl:ObjectProperty ;
+.
+orcid:source
+  a owl:ObjectProperty ;
+.
+orcid:source-client-id
+  a owl:ObjectProperty ;
+.
+orcid:source-name
+  a owl:ObjectProperty ;
+.
+orcid:source-orcid
+  a owl:ObjectProperty ;
+.
+orcid:start-date
+  a owl:ObjectProperty ;
+.
+orcid:submission-date
+  a owl:ObjectProperty ;
+.
+orcid:summaries
+  a owl:ObjectProperty ;
+.
+orcid:title
+  a owl:ObjectProperty ;
+.
+orcid:transient
+  a owl:ObjectProperty ;
+.
+orcid:translated-title
+  a owl:ObjectProperty ;
+.
+orcid:type
+  a owl:ObjectProperty ;
+.
+orcid:uri
+  a owl:ObjectProperty ;
+.
+orcid:url
+  a owl:ObjectProperty ;
+.
+orcid:url-name
+  a owl:ObjectProperty ;
+.
+orcid:value
+  a owl:ObjectProperty ;
+.
+orcid:verified
+  a owl:ObjectProperty ;
+.
+orcid:verified-email
+  a owl:ObjectProperty ;
+.
+orcid:verified-primary-email
+  a owl:ObjectProperty ;
+.
+orcid:visibility
+  a owl:ObjectProperty ;
+.
+orcid:withSummary
+  a owl:ObjectProperty ;
+.
+orcid:work-summary
+  a owl:ObjectProperty ;
+.
+orcid:works
+  a owl:ObjectProperty ;
+.
+orcid:year
+  a owl:ObjectProperty ;
+.
