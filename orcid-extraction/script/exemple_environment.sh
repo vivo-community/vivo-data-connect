@@ -3,6 +3,7 @@
 ###################################################################
 # Script Name    : environement.sh
 # Description    : file containing the definition of the environment variables of the scripts. 
+#                : Assign the desired values and rename it to environment.sh
 # Args           :
 # Author         : Michel Héon
 # Email          : heon.michel@uqam.ca
@@ -27,12 +28,5 @@ ONTO_ALL_RECORDS=$DEMO_HOME/onto_uqam.n3
 KAFKA_HOST=localhost
 KAFKA_HOME=/opt/kafka
 TOPIC=vivo-dataconnect-topic
-
-##### SUPPRIMER
-source ~/.config/orcid_id 
-GIT_VIVO=~/00-PROJECT-UQAM-VIVO/00-GIT
-DEMO_HOME=/home/heon/git/vivo-data-connect/orcid-extraction
-ONTO_ALL_RECORDS=$DEMO_HOME/onto_uqam.n3
-#####
 
 PATH=$PATH:$JENA_HOME/bin:$KAFKA_HOME/bin
